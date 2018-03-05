@@ -1,0 +1,17 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": "google",
+    "rules": {
+        "require-jsdoc": [2, {
+            "require": {
+                "FunctionDeclaration": false,
+                "MethodDefinition": false,
+                "ClassDeclaration": false
+            }
+        }],
+        "max-len": "off"
+    }
+}
