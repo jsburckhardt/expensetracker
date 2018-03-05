@@ -1,5 +1,5 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
-const config = require('./config');
+const config = require('../config');
 const documentBuilder = require('./document-builder');
 
 let param;

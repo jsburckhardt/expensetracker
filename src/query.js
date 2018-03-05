@@ -1,5 +1,5 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
-const config = require('./config');
+const config = require('../config');
 const queryBuilder = require('./query-builder');
 
 let param;
@@ -12,7 +12,7 @@ if (typeof process.argv[2] === 'undefined') {
     param = process.argv[2];
 }
 
-let queryString = queryBuilder.createSelectQuery(param);
+let queryString = queryBuilder.createSelectQuery(JSON.parse(param));
 let querySpec = {
     query: queryString,
 };

@@ -4,7 +4,7 @@
     "description": "Connection to DocumentDB",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jasmine"
     },
     "author": "",
     "license": "ISC",
@@ -13,11 +13,12 @@
     },
     "devDependencies": {
         "eslint": "^4.18.2",
-        "eslint-config-standard": "^11.0.0",
         "eslint-config-google": "^0.9.1",
+        "eslint-config-standard": "^11.0.0",
         "eslint-plugin-import": "^2.9.0",
         "eslint-plugin-node": "^6.0.1",
         "eslint-plugin-promise": "^3.6.0",
-        "eslint-plugin-standard": "^3.0.1"
+        "eslint-plugin-standard": "^3.0.1",
+        "jasmine": "^3.1.0"
     }
 }
