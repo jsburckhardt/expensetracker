@@ -18,7 +18,7 @@ function createSelectQuery(values) {
         query = appendCondition(query, `c.Amount == ${values.Amount}`);
     }
     return query;
-};
+}
 
 exports.createSelectQuery = createSelectQuery;
 exports.appendCondition = appendCondition;

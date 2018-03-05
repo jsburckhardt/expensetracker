@@ -3,7 +3,7 @@ exports.createTransactionDocument = function(request) {
 
     // date
     if (request.hasOwnProperty('Date')) {
-        document.Date = param.Date;
+        document.Date = (Date.parse(request.Date))/1000;
     } else {
         document.Date = (Date.now()) / 1000;
     }

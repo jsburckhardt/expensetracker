@@ -2,7 +2,7 @@
     "name": "nodejs",
     "version": "1.0.0",
     "description": "Connection to DocumentDB",
-    "main": "app.js",
+    "main": "./src/query.js",
     "scripts": {
         "test": "jasmine"
     },
