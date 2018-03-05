@@ -1,0 +1,118 @@
+console.log();
+console.log('Azure DocumentDB Node.js Samples');
+console.log('================================');
+console.log();
+console.log('DOCUMENT MANAGEMENT');
+console.log('===================');
+console.log();
+
+var DocumentDBClient = require('documentdb').DocumentClient;
+var config = require('./config');
+var fs = require('fs');
+var async = require('async');
+var databaseId = config.databaseId;
+var collectionId = config.collectionId;
+var dbLink;
+var collLink;
+
+
+var config = require('./config');
+var host = config.connection.endpoint;
+var masterKey = config.connection.authKey;
+var databaseId = config.databaseId;
+
+var client = new DocumentDBClient(host, {
+    masterKey: masterKey
+});
+
+dbLink = 'dbs/' + databaseId;
+console.log(dbLink);
+collLink = dbLink + '/colls/' + collectionId;
+console.log(collLink);
+
+//console.log('\n2. listDocuments in collection \'' + collLink + '\'');
+//listDocuments(collLink, function (docs) {
+//    for (var i = 0; i < docs.length; i++) {
+//        console.log(docs[i].id);
+//    }
+//    
+//    
+//    
+//    var docId = docs[0].id;
+//    var docLink = collLink + '/docs/' + docId;
+//    
+//    console.log('\n3. readDocument \'' + docLink + '\'');
+//    readDocument(docLink, function (doc) {
+//        console.log('Document with id \'' + docId + '\' returned a doc with _self of \'' + doc.Id + '\'');
+        var querySpec = {
+            query: 'SELECT * FROM c WHERE  c.Id > @Id',
+            parameters: [
+                {
+                    name: '@Id',
+                    value: 3785
+                }
+            ]
+        };
+    
+
+
+        console.log('\n4. queryDocuments in collection \'' + collLink + '\'');
+        client.queryDocuments(collLink, querySpec).toArray(function (err, results) {
+            if (err) {
+                handleError(err);
+            } else if (results.length == 0) {
+                throw ("No documents found matching");
+
+            } else if (results.length > 1) {
+                for (var j = 0; j < results.length; j++) {
+                    console.log(results[j].Amount);
+                }
+            }
+        })
+                //for(var result in results){
+                //    var expense = result;
+                //    console.log(expense.Amount)
+                //}
+                //throw ("More than 1 document found matching");
+//
+//            } else {
+//                var doc = results[0];
+//                console.log('The \'' + doc.id + '\' family has lastName \'' + doc.Id + '\'');
+//                console.log('The \'' + doc.id + '\' family has ' + doc.Amount + ' children \'');
+//                
+//                docLink = 'dbs/' + databaseId + '/colls/' + collectionId + '/docs/' + doc.id;               
+//                
+//            }
+//        }
+//        );
+//    }
+//    );
+//}
+//);
+//
+
+//console.log(doc)
+
+//function listDocuments(collLink, callback) {
+//    var queryIterator = client.readDocuments(collLink).toArray(function (err, docs) {
+//        if (err) {
+//            handleError(err);
+//        
+//        } else {
+//            console.log(docs.length + ' Documents found');
+//            callback(docs);
+//        }
+//    });
+//}
+//
+//function readDocument(docLink, callback) {
+//    client.readDocument(docLink, function (err, doc) {
+//        if (err) {
+//            handleError(err);
+//        
+//        } else {
+//            console.log('Document \'' + docLink + '\' found');
+//            callback(doc);
+//        }
+//    });
+//}
