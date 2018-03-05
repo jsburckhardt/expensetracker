@@ -1,31 +1,6 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
 const config = require('./config');
-
-function processRequest(request) {
-    let document = {};
-
-    // date
-    if (request.hasOwnProperty('Date')) {
-        document.Date = param.Date;
-    } else {
-        document.Date = (Date.now()) / 1000;
-    }
-
-    // expense or income
-    if (request.Amount >= 0) {
-        document.Store = 'N/A';
-        document.WE = 'N/A';
-    } else {
-        document.Store = request.Store;
-        document.WE = request.WE;
-    }
-
-    document.Category = request.Category;
-    document.Amount = request.Amount;
-    document.Description = request.Description;
-
-    return document;
-};
+const documentBuilder = require('./document-builder');
 
 let param;
 
@@ -42,7 +17,7 @@ const client = new DocumentDBClient(config.connection.endpoint, {
     masterKey: config.connection.authKey,
 });
 
-let transaction = processRequest(param);
+let transaction = documentBuilder.createTransactionDocument(param);
 client.createDocument(collLink, transaction, (err, created) => {
     if (err) console.log(err);
 });
