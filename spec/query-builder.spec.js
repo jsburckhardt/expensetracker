@@ -1,8 +1,7 @@
 const qb = require('../src/query-builder');
 
 describe('Query builder: createSelectQuery', function() {
-
-    xit('should return error when value is empty', function() {
+    it('should return error when value is empty', function() {
         let r = qb.createSelectQuery({});
         expect(r).toBe('SELECT * FROM c');
     });

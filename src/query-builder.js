@@ -7,6 +7,10 @@ function appendCondition(query, condition, type = 'and') {
 }
 
 function createSelectQuery(values) {
+    if (Object.keys(values).length === 0) {
+        let query = 'SELECT * FROM c';
+        return query;
+    }
     let query = 'SELECT * FROM c WHERE ';
     if (values.hasOwnProperty('start')) {
         query = appendCondition(query, `c.Date >= ${(Date.parse(values.start))/1000}`);
