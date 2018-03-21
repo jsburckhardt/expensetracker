@@ -19,7 +19,10 @@ function createSelectQuery(values) {
         query = appendCondition(query, `c.Date <= ${(Date.parse(values.end))/1000}`);
     }
     if (values.hasOwnProperty('Amount')) {
-        query = appendCondition(query, `c.Amount == ${values.Amount}`);
+        query = appendCondition(query, `c.Amount = ${values.Amount}`);
+    }
+    if (values.hasOwnProperty('Description')) {
+        query = appendCondition(query, `CONTAINS(LOWER(c.Description),LOWER("${values.Description}"))`);
     }
     return query;
 }

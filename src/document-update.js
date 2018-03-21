@@ -4,7 +4,7 @@ exports.updateStringtoFloatAmountDocument = function(document) {
     let temp = parseFloat(document.Amount);
     document.Amount = temp;
 
-    //return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
     client.replaceDocument(documentUrl, document, (err, result) => {
         if (err) console.log(err);
         else {

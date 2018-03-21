@@ -12,6 +12,7 @@ if (typeof process.argv[2] === 'undefined') {
 }
 
 let queryString = queryBuilder.createSelectQuery(JSON.parse(param));
+console.log(queryString);
 let querySpec = {
     query: queryString,
 };
