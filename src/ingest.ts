@@ -1,5 +1,9 @@
-const DocumentDBClient = require('documentdb').DocumentClient;
-const config = require('../config');
+import { DocumentClient, DocumentQuery } from 'documentdb'
+import { Request, Response } from 'express'
+import { documentBuilder } from './document-builder'
+
+// const DocumentDBClient = require('documentdb').DocumentClient;
+// const config = require('../config'); environment variable
 const documentBuilder = require('./document-builder');
 const argumentValidator = require('./argument-validator');
 
