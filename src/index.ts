@@ -9,6 +9,6 @@ app.use(morgan('combined'))
 // GET /transactions?q={}
 app.get('/transactions', query.queryHandler);
 
-app.post('/transactions',ingest.)
+//app.post('/transactions',ingest.)
 
 app.listen(8122);
