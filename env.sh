@@ -1,5 +1,5 @@
-export DDB_ENDPOINT=https://cdb0000001.documents.azure.com:443/
-export DDB_AUTHKEY=usA1lH4N03EVAKynQUksGpCHoB2MDX8IrwBsHkz80ZinwMtrQ1PEwnEuumt9gGU2nO9tthHqZMZyMl2tfQ1lfg==
+export DDB_ENDPOINT=https://YOUR_DOCUMENT_DB_INSTANCE.documents.azure.com:443/
+export DDB_AUTHKEY=YOUR_AUTH_KEY_FOR_DOCUMENT_DB
 export DDB_DB_ID=expensetrackerdb
 export DDB_DB_COLLECTION_ID=expensetrackercollection
 export DDB_DB_COLLECTION_CAT_ID=categorycollection
